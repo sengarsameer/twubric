@@ -1,34 +1,39 @@
 <?php
- include ('config.php');
- require "twitteroauth/autoload.php";
+require_once 'twitteroauth/autoload.php';
 use Abraham\TwitterOAuth\TwitterOAuth;
-$connection = new TwitterOAuth($CONSUMER_KEY, $CONSUMER_SECRET);
-$request_token = $connection->get($OAUTH_CALLBACK);//get Request Token
-echo $request_token;
  
-if( $request_token) //session on
-{
-    $token = $request_token['oauth_token'];
-    $_SESSION['request_token'] = $token ; //session on
-    $_SESSION['request_token_secret'] = $request_token['oauth_token_secret'];
+session_start();
  
-    switch ($connection->http_code) 
-    {
-        case 200:
-            $url = $connection->getAuthorizeURL($token);
-            //redirect to Twitter .
-            header('Location: ' . $url); 
-            break;
-        default:
-            echo "Coonection with twitter Failed";
-            break;
-    }
+$config = require_once 'config.php';
+
+// create TwitterOAuth object
+$twitteroauth = new TwitterOAuth($config['consumer_key'], $config['consumer_secret']);
  
+// request token of application
+$request_token = $twitteroauth->oauth(
+    'oauth/request_token', [
+        'oauth_callback' => $config['url_callback']
+    ]
+);
+echo '<pre>'; print_r($request_token); echo '</pre>';
+// throw exception if something gone wrong
+if($twitteroauth->getLastHttpCode() != 200) {
+    throw new \Exception('There was a problem performing this request');
 }
-else //error receiving request token
-{
-    echo "Error Receiving Request Token";
-}
+ 
+// save token of application to session
+$_SESSION['oauth_token'] = $request_token['oauth_token'];
+$_SESSION['oauth_token_secret'] = $request_token['oauth_token_secret'];
+ 
+// generate the URL to make request to authorize our application
+$url = $twitteroauth->url(
+    'oauth/authorize', [
+        'oauth_token' => $request_token['oauth_token']
+    ]
+);
+
+// and redirect
+header('Location: '. $url);
 ?>
 
 
