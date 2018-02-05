@@ -12,6 +12,6 @@
  
     //
     'url_login'         => 'https://goo.gl/KXBPQH',
-    'url_callback'      => 'https://goo.gl/xg2jM4',
+    'url_callback'      => 'http://localhost:80/app/followers/',
 ];
 ?>
