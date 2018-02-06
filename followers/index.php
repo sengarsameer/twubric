@@ -60,7 +60,7 @@ if(isset($user->error)) {
 $status_list=$twitter->get('followers/list', array('screen_name' => $user->screen_name));
 $list= json_decode (json_encode($status_list),true);
 $temp=count($list['users']);
-echo '<pre>'; print_r($status_list); echo '</pre>';
+// echo '<pre>'; print_r($status_list); echo '</pre>';
 ?>
 <html>
     <head>
