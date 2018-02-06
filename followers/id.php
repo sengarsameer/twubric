@@ -1,5 +1,6 @@
 <?php
 $config = require_once '../config.php';
+include('rubric.php');
 $id= $_GET['id'];
 $scrn=$_GET['screen_name'];
 $name=$_GET['name'];
@@ -20,5 +21,6 @@ curl_setopt ($curl, CURLOPT_URL, "http://api.klout.com/v2/user.json/".$b_result[
 $influence = json_decode(curl_exec($curl),true);
 curl_close($curl);
 echo $created;
-
+$xyz=new Rubric($flc,$frc,$stc,$created,$influence);
+$xyz->getTwubric();
 ?>
