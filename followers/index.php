@@ -81,7 +81,7 @@ echo '<pre>'; print_r($status_list); echo '</pre>';
 for($i=0;$i<$temp;$i++){
    echo "<TR ALIGN='CENTER'>
       <TD>".$list['users'][$i]['name']."</TD>
-      <TD><a href=''>".$list['users'][$i]['screen_name']."</a></TD>
+      <TD><a href='id.php?id=".$list['users'][$i]['id']."&screen_name=".$list['users'][$i]['screen_name']."&name=".$list['users'][$i]['name']."&followers_count=".$list['users'][$i]['followers_count']."&friends_count=".$list['users'][$i]['friends_count']."&listed_count=".$list['users'][$i]['listed_count']."&favourites_count=".$list['users'][$i]['favourites_count']."&statuses_count=".$list['users'][$i]['statuses_count']."&created_at=".$list['users'][$i]['created_at']."'>".$list['users'][$i]['screen_name']."</a></TD>
    </TR>";
 }
    ?>
