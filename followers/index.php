@@ -60,8 +60,7 @@ if(isset($user->error)) {
 $status_list=$twitter->get('followers/list', array('screen_name' => $user->screen_name));
 $list= json_decode (json_encode($status_list),true);
 $temp=count($list['users']);
-echo $temp;
-//echo '<pre>'; print_r($status_list); echo '</pre>';
+echo '<pre>'; print_r($status_list); echo '</pre>';
 ?>
 <html>
     <head>
@@ -69,7 +68,7 @@ echo $temp;
     </head>
 
     <body>
-    <TABLE BORDER="5"    WIDTH="50%"   CELLPADDING="4" CELLSPACING="3">
+    <TABLE BORDER="5"    WIDTH="50%"   CELLPADDING="4" CELLSPACING="3" >
    <TR>
       <TH COLSPAN="2"><BR><H3>TABLE TITLE</H3>
       </TH>
@@ -82,7 +81,7 @@ echo $temp;
 for($i=0;$i<$temp;$i++){
    echo "<TR ALIGN='CENTER'>
       <TD>".$list['users'][$i]['name']."</TD>
-      <TD>".$list['users'][$i]['screen_name']."</TD>
+      <TD><a href=''>".$list['users'][$i]['screen_name']."</a></TD>
    </TR>";
 }
    ?>

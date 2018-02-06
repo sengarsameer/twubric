@@ -13,5 +13,6 @@
     //
     'url_login'         => 'https://goo.gl/KXBPQH',
     'url_callback'      => 'http://localhost:80/app/followers/',
+    'klout_key' => 'z5qjd8d5h4pywp7yd7hjzxm5',
 ];
 ?>
