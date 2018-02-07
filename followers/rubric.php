@@ -1,5 +1,6 @@
 <?php
 
+    // Declaring class and its properties
     class Rubric {
         private $points;
         private $followers_count;
@@ -23,6 +24,8 @@
             "Total"=>0,
         );
 
+        // Initalizing properies of the class
+
         function __construct ($followers_count = 0, $friends_count=0,$statuses_count=0,$influence=0,$created_at="") {
             $this->followers_count = $followers_count;
             $this->friends_count = $friends_count;
@@ -31,8 +34,14 @@
             $this->created_at = $created_at;
             return $this;
         }
+        // Initalizing properies of the class
 
+        // Mathematical and logic functional for calculating Tweburic
+
+        
         function getTwubric() {
+
+            // Calculating Reburic for friends
             if($this->friends_count >=0 && $this->friends_count <1000)  {
                 $criteria[0][2] = 10/3;
             }
@@ -43,7 +52,8 @@
                 $criteria[0][2] = 10;
             }
 
-            //echo $this->influence;
+            
+            // Calculating Reburic for influences
             if($this->influence >=0.0 && $this->influence<35.0) {
                 $criteria[1][2]=10/3;
             }
@@ -54,6 +64,7 @@
                 $criteria[1][2]=10;
             }
 
+            // Calculating chirpness
             $now = new DateTime(date('Y-m-d')); // or your date as well
             $parts = explode(" ", $this->created_at );
            // echo '<pre>'; print_r($parts); echo '</pre>';
@@ -71,7 +82,9 @@
             else {
                 $criteria[2][2]=10;
             }
+            // Calculating chirpness
 
+            // Calculating final Twubric
             $a=2*$criteria[0][2]/10;
             $b=4*$criteria[1][2]/10;
             $c=4*$criteria[2][2]/10;
@@ -82,6 +95,7 @@
             return $twubric;
 
         }
+        // Mathematical functional for calculating Tweburic
 
     }
     
