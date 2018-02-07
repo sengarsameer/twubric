@@ -43,7 +43,7 @@
                 $criteria[0][2] = 10;
             }
 
-            echo $this->influence;
+            //echo $this->influence;
             if($this->influence >=0.0 && $this->influence<35.0) {
                 $criteria[1][2]=10/3;
             }
@@ -56,7 +56,7 @@
 
             $now = new DateTime(date('Y-m-d')); // or your date as well
             $parts = explode(" ", $this->created_at );
-            echo '<pre>'; print_r($parts); echo '</pre>';
+           // echo '<pre>'; print_r($parts); echo '</pre>';
             $your_date = new DateTime(date('Y-m-d',strtotime($parts[1]." ".$parts[2]." ".$parts[6])));
             $datediff = $now->diff( $your_date);
             //echo " ".$datediff->days;
