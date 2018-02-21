@@ -34,6 +34,8 @@ To test this code you need to install dependencies with Composer, and run /twubr
 
 ```shell
 composer install
+
+install php(version of php you are using)-curl
 ```
 * For getting your API keys :-
 
