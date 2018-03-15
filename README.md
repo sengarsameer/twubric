@@ -15,7 +15,7 @@ If you have an account on Twitter, you’d probably know that apart from normal 
 
 While it is flattering to have these tweeps follow you, you’d want to weed them out at some point, I think (I would). So:
 
-  + I want to build a simple web API that allows a Twitter user to review his followers, and their “scores” based on a rubric.
+  + This is a web API that allows a Twitter user to review his followers, and their “scores” based on a rubric.
 
 Criteria | Weightage | Scale
 ------------ | ------------- | -------------
